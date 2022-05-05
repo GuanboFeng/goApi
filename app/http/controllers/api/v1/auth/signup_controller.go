@@ -2,12 +2,11 @@
 package auth
 
 import (
+	"github.com/gin-gonic/gin"
 	v1 "goApi/app/http/controllers/api/v1"
 	"goApi/app/models/user"
 	"goApi/app/requests"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"goApi/pkg/response"
 )
 
 // SignupController 注册控制器
@@ -24,7 +23,7 @@ func (sc *SignupController) IsPhoneExist(c *gin.Context) {
 		return
 	}
 	//  检查数据库并返回响应
-	c.JSON(http.StatusOK, gin.H{
+	response.JSON(c, gin.H{
 		"exist": user.IsPhoneExist(request.Phone),
 	})
 }
@@ -39,7 +38,7 @@ func (sc *SignupController) IsEmailExist(c *gin.Context) {
 	}
 
 	//  检查数据库并返回响应
-	c.JSON(http.StatusOK, gin.H{
+	response.JSON(c, gin.H{
 		"exist": user.IsEmailExist(request.Email),
 	})
 }
