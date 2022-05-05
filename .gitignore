@@ -43,7 +43,8 @@ _cgo_export.*
 *.log
 *.sqlite
 *.db
-
+*
+!.gitignore
 # 临时文件 #
 ######################
 tmp/
