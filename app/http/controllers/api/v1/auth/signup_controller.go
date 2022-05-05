@@ -31,7 +31,6 @@ func (sc *SignupController) IsPhoneExist(c *gin.Context) {
 
 // IsEmailExist 检测邮箱是否已注册
 func (sc *SignupController) IsEmailExist(c *gin.Context) {
-
 	// 初始化请求对象
 	request := requests.SignupEmailExistRequest{}
 
