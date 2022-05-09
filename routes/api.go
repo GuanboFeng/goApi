@@ -26,8 +26,12 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			authGroup.POST("/signup/using-phone", suc.SignupUsingPhone)
 			authGroup.POST("/signup/using-email", suc.SignupUsingEmail)
 			// 发送验证码
+			lgc := new(auth.LoginController)
+			// 使用手机号，短信验证码进行登录
+			authGroup.POST("/login/using-phone", lgc.LoginByPhone)
 
 		}
+
 		v1.GET("/", func(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{
 				"hello": "gin",
