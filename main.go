@@ -10,6 +10,7 @@ import (
 	"goApi/pkg/auth"
 	"goApi/pkg/config"
 	"goApi/pkg/response"
+	"net/http"
 )
 
 func init() {
@@ -43,6 +44,10 @@ func main() {
 		userModel := auth.CurrentUser(c)
 		response.Data(c, userModel)
 	})
+	router.GET("/test_guest", middlewares.GuestJWT(), func(c *gin.Context) {
+		c.String(http.StatusOK, "Hello guest")
+	})
+
 	// 运行服务
 	err := router.Run(":" + config.Get("app.port"))
 	if err != nil {
