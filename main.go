@@ -40,6 +40,11 @@ func main() {
 	bootstrap.SetupRedis()
 	// 初始化路由绑定
 	bootstrap.SetupRoute(router)
+	// 注册子命令
+	rootCmd.AddCommand(
+		make.CmdMake,
+	)
+
 	router.GET("/test_auth", middlewares.AuthJWT(), func(c *gin.Context) {
 		userModel := auth.CurrentUser(c)
 		response.Data(c, userModel)
