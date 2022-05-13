@@ -48,3 +48,9 @@ func (userModel *User) Save() (rowsAffected int64) {
 	result := database.DB.Save(&userModel)
 	return result.RowsAffected
 }
+
+// All 获取所有用户数据
+func All() (users []User) {
+	database.DB.Find(&users)
+	return
+}
