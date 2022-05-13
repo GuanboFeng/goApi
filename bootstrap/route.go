@@ -11,6 +11,7 @@ import (
 func SetupRoute(router *gin.Engine) {
 	registerGlobalMiddleWare(router)
 	routes.RegisterAPIRoutes(router)
+	routes.RegisterADMINRoutes(router)
 	setup404Handler(router)
 }
 func registerGlobalMiddleWare(router *gin.Engine) {
