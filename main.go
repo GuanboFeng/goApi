@@ -83,6 +83,7 @@ func main() {
 	rootCmd.AddCommand(
 		cmd.CmdServe,
 		cmd.CmdKey,
+		cmd.CmdPlay,
 	)
 
 	// 配置默认运行 Web 服务
@@ -95,11 +96,4 @@ func main() {
 	if err := rootCmd.Execute(); err != nil {
 		console.Exit(fmt.Sprintf("Failed to run app with %v: %s", os.Args, err.Error()))
 	}
-	// 注册子命令
-	/*rootCmd.AddCommand(
-		cmd.CmdServe,
-		cmd.CmdKey,
-		cmd.CmdPlay,
-		cmd.CmdMigrate,
-	)*/
 }
